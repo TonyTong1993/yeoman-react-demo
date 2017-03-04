@@ -19,3 +19,10 @@ body {
   border-width: 1px 0;
   background: #666;
 }
+.normal-Todo {
+  text-decoration: none;
+}
+.selected-Todo {
+  text-decoration: line-through;
+}
+

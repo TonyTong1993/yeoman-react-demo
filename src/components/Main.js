@@ -1,15 +1,17 @@
 require('normalize.css/normalize.css');
 require('styles/App.css');
-
+import App from  '../container/App';
 import React from 'react';
-
+import { todos } from  '../reducers/Reducer';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+let store = createStore(todos);
 class AppComponent extends React.Component {
   render() {
     return (
-      <div className="index">
-        <img src={yeomanImage} alt="Yeoman Generator" />
-        <div className="notice">Please edit <code>src/components/Main.js</code> to get started!</div>
-      </div>
+      <Provider store={store}>
+        <App />
+      </Provider>
     );
   }
 }

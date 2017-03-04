@@ -1,15 +1,16 @@
-import {combineReducers} from 'redux'
+
  const todo = (state,action) => {
   switch (action.type) {
     case 'ADD_TODO':
       return {
         undefined,
         id:action.id,
-        text:action.text
+        text:action.text,
+        completed:false
       };
     case 'TOGGLE_TODO':
     if (state.id == action.id) {
-      return Objet.assign({}, state, {
+      return Object.assign({}, state, {
         completed: !state.completed
       });
     }else {
@@ -19,7 +20,10 @@ import {combineReducers} from 'redux'
       return state
   }
 };
- const todos = (state,action) => {
+export const todos = (state,action) => {
+  if (!state){
+    state = []
+  }
   switch (action.type) {
     case 'ADD_TODO':
   	return [...state,todo(undefined,action)];
@@ -29,19 +33,5 @@ import {combineReducers} from 'redux'
   	return state
   }
 };
- const visibilityFilter = (state = "SHOW_ALL", action) => {
-    switch (action.type) {
-      case 'SET_VISIBILITY_FILTER':
-        return {
-          state,
-          filter: action.filter
-        }
-        default:
-        return state
-    }
 
-};
-export default reducers = combineReducers({
-    todos,
-    visibilityFilter,
-})
+
