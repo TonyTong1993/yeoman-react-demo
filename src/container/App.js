@@ -4,11 +4,12 @@
 import React from 'react';
 import AddTodo from  './components/AddTodo';
 import VisibilityList from  './components/VisibilityList';
-
+import Footer from  './components/Footer'
 const App = () => (
   <div>
-    <AddTodo/>
+    <AddTodo />
     <VisibilityList />
+    <Footer />
   </div>
 );
 export default App;

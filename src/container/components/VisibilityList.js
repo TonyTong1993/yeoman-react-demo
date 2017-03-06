@@ -11,12 +11,19 @@ const mapDispatchToProps = (dispatch)=>{
     }
   }
 };
-const getVisibleTodos = (todos) =>{
-  return todos
+const getVisibleTodos = (todos,filter) =>{
+ switch (filter) {
+   case 'SHOW_ALL':
+     return todos;
+   case 'COMPLETED':
+     return todos.filter(todo => todo.completed);
+   case 'ACTIVE':
+     return todos.filter(todo =>!todo.completed);
+ }
 };
 const mapStateToProps = (state)=>{
   return {
-    todos: getVisibleTodos(state)
+    todos: getVisibleTodos(state.todos,state.visibilityFilter)
   }
 };
 export default connect(mapStateToProps,mapDispatchToProps)(TodoList);
